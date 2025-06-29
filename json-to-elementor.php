@@ -59,7 +59,7 @@ function render_import_page() {
         if (isset($_FILES['json_file']) && $_FILES['json_file']['error'] === UPLOAD_ERR_OK) {
             $json_data = json_decode(file_get_contents($_FILES['json_file']['tmp_name']), true);
             if ($json_data && isset($json_data['data']['content'])) {
-                $result = import_hero_to_elementor($json_data);
+                $result = import_json_to_elementor($json_data);
                 if (is_wp_error($result)) {
                     echo '<div class="error"><p>' . esc_html($result->get_error_message()) . '</p></div>';
                 } else {
